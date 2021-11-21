@@ -4,14 +4,4 @@ const throwError = (message, code) => {
     throw error;
 }
 
-const handleNextError = (err, next) => {
-    if(!err.code){
-        err.code = 500;
-    }
-    next(err);
-}
-
-module.exports = {
-    throwError,
-    handleNextError
-}
+module.exports = throwError;

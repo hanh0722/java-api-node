@@ -13,7 +13,7 @@ const ProductSchema = new Schema({
     },
     image_urls: [
         {
-            type: String,
+            type: String
         }
     ],
     in_stock: {
@@ -22,6 +22,7 @@ const ProductSchema = new Schema({
     },
     regular_price: {
         type: Number,
+        required: true
     },
     category: {
         type: String

@@ -1,5 +1,5 @@
-const transporter = require('nodemailer-sendgrid-transport');
 const nodemailer = require('nodemailer');
+const transporter = require('nodemailer-sendgrid-transport');
 
 const options = {
     auth: {
