@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const User = new Schema({
     name: {
         type: String,
         required: true
@@ -13,31 +13,34 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        required: true    
+        required: true
     },
     cart: [
         {
-            productId: {
+            _id: {
                 type: Schema.Types.ObjectId,
-                required: true,
                 ref: 'product'
             },
             quantity: {
-                type: Number
-            },
-            
+                type: Number,
+                required: true
+            }
         }
     ],
     phone: {
         type: String,
-        required: true
     },
     Role: [
         {
-            type: String,
-            required: true
+            type: String
         }
     ],
+    tokenVerify: {
+        type: String
+    },
+    OTP: {
+        type: String
+    },
     basic_information: {
         country: {
             type: String
@@ -55,15 +58,16 @@ const UserSchema = new Schema({
             type: String
         }
     },
-    tokenVerify: {
-        type: String
-    },
-    OTP: {
-        type: String
-    },
     avatar: {
         type: String
+    },
+    verified: {
+        type: Boolean,
+        required: true
+    },
+    tokenChangePassword: {
+        type: String
     }
-});
+})
 
-module.exports = mongoose.model('user', UserSchema);
+module.exports = mongoose.model('user', User);

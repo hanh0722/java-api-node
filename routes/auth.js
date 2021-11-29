@@ -1,8 +1,13 @@
-const express = require('express');
-const { confirmUserRegister } = require('../controller/auth');
+const express = require("express");
+const { sendMailAfterRegister } = require("../controller");
+const { loginHandler } = require("../controller/Auth/login");
+const { resetPasswordUserByEmail } = require("../controller/Auth/reset-password");
+const { SerializeLogin, validationUser } = require("../validation");
+const router = express.Router();
 
-const Router = express.Router();
+router.post("/validate", sendMailAfterRegister);
 
-Router.get('/confirm', confirmUserRegister);
+router.post("/login", SerializeLogin, loginHandler);
 
-module.exports = Router;
+router.put('/reset', validationUser ,resetPasswordUserByEmail);
+module.exports = router;
